@@ -1,0 +1,262 @@
+WEBVTT
+
+1
+00:00:00.400 --> 00:00:06.955
+A colleague sends you a Python script and says: run this, it will help with the alert.
+
+2
+00:00:06.955 --> 00:00:08.098
+What do you do?
+
+3
+00:00:08.098 --> 00:00:09.470
+You read it first.
+
+4
+00:00:09.470 --> 00:00:16.331
+In this demonstration I will use the three questions on a small script: what does it read,
+
+5
+00:00:16.331 --> 00:00:19.913
+what does it change, and where does it connect.
+
+6
+00:00:19.913 --> 00:00:23.344
+Then, only if the answers are safe, I run it.
+
+7
+00:00:24.443 --> 00:00:31.694
+Here is the script, failed underscore login counter dot py, open in a text editor, not running.
+
+8
+00:00:31.694 --> 00:00:38.181
+The comment at the top claims it only reads a file and never connects to the network.
+
+9
+00:00:38.181 --> 00:00:41.387
+Good, but a comment is a claim, not proof.
+
+10
+00:00:41.387 --> 00:00:43.524
+Let's check the code itself.
+
+11
+00:00:44.623 --> 00:00:47.314
+Question one: what does it read?
+
+12
+00:00:47.314 --> 00:00:48.492
+Look for open.
+
+13
+00:00:48.492 --> 00:00:55.387
+Line 19 opens sys dot argv one, which is the file name I give on the command line.
+
+14
+00:00:55.387 --> 00:00:59.591
+Open is used with no write mode, so it reads only.
+
+15
+00:00:59.591 --> 00:01:03.712
+And line 20 loops through the lines of that file.
+
+16
+00:01:03.712 --> 00:01:07.328
+So it reads one log file, the one I choose.
+
+17
+00:01:08.427 --> 00:01:11.389
+Question two: what does it change?
+
+18
+00:01:11.389 --> 00:01:20.099
+I look for anything that writes, deletes or moves: write, remove, rename, os dot system, subprocess.
+
+19
+00:01:20.099 --> 00:01:21.319
+There is none.
+
+20
+00:01:21.319 --> 00:01:26.719
+The only output is print, which just shows text on the screen.
+
+21
+00:01:26.719 --> 00:01:28.635
+So it changes nothing.
+
+22
+00:01:29.735 --> 00:01:33.049
+Question three: where does it connect?
+
+23
+00:01:33.049 --> 00:01:35.752
+Look at the imports at the top.
+
+24
+00:01:35.752 --> 00:01:40.024
+Only sys and collections, both built into Python.
+
+25
+00:01:40.024 --> 00:01:46.738
+No socket, no requests, no urllib, and no web addresses anywhere in the file.
+
+26
+00:01:46.738 --> 00:01:48.743
+So it connects nowhere.
+
+27
+00:01:49.843 --> 00:01:55.619
+All three answers are safe, and the script matches its description.
+
+28
+00:01:55.619 --> 00:02:00.273
+Now I run it, inside the lab VM, on the demo auth log.
+
+29
+00:02:00.273 --> 00:02:03.979
+python3, the script name, and the log file.
+
+30
+00:02:05.079 --> 00:02:07.950
+Now interpret the output.
+
+31
+00:02:07.950 --> 00:02:13.805
+203.0.113.45, a public address, failed seven times.
+
+32
+00:02:13.805 --> 00:02:21.037
+In the log it tried user names like admin, oracle, test and pi.
+
+33
+00:02:21.037 --> 00:02:26.203
+That's an automated password-guessing attack.
+
+34
+00:02:26.203 --> 00:02:32.288
+198.51.100.9 tried root three times, also suspicious.
+
+35
+00:02:32.288 --> 00:02:36.077
+But 10.10.20.57 failed only once.
+
+36
+00:02:36.077 --> 00:02:38.487
+Let's check that one.
+
+37
+00:02:39.587 --> 00:02:45.784
+grep for 10.10.20.57: one failed password, then accepted six seconds later.
+
+38
+00:02:45.784 --> 00:02:51.898
+That's our own lab workstation, a person who mistyped their password once.
+
+39
+00:02:51.898 --> 00:02:52.476
+Normal.
+
+40
+00:02:52.476 --> 00:02:57.515
+The script gave us the counts; the analyst gives the meaning.
+
+41
+00:02:58.615 --> 00:02:59.841
+One last warning.
+
+42
+00:02:59.841 --> 00:03:06.328
+If question three had found something like import requests, or a web address being called,
+
+43
+00:03:06.328 --> 00:03:10.870
+or if question two had found files being deleted, I would stop.
+
+44
+00:03:10.870 --> 00:03:13.897
+I would not run it, and I would report it.
+
+45
+00:03:13.897 --> 00:03:19.231
+Reading before running is a habit that protects you and your organization.
+
+46
+00:03:20.331 --> 00:03:23.079
+One important change for this afternoon.
+
+47
+00:03:23.079 --> 00:03:28.163
+You will not install VirtualBox or a virtual machine on your own computer.
+
+48
+00:03:28.163 --> 00:03:32.009
+All of today's activities happen in the CTM Virtual Lab.
+
+49
+00:03:32.009 --> 00:03:38.192
+Open the lab link from your trainer, and sign in with your full name and your seat number.
+
+50
+00:03:38.192 --> 00:03:44.443
+You get your own Windows workstation and your own Ubuntu server, right inside your browser.
+
+51
+00:03:44.443 --> 00:03:49.252
+Nothing you type there touches your real computer or any real network.
+
+52
+00:03:50.352 --> 00:03:54.072
+Inside the lab, the left panel lists your missions.
+
+53
+00:03:54.072 --> 00:04:01.660
+The practice missions repeat today's three videos on the same demo hosts, so your screen can match mine.
+
+54
+00:04:01.660 --> 00:04:05.089
+The activities, 2.1 to 2.4, use your own hosts.
+
+55
+00:04:05.089 --> 00:04:09.685
+Their values are different for every seat, so do your own work.
+
+56
+00:04:09.685 --> 00:04:12.458
+Each step has a hint if you get stuck.
+
+57
+00:04:12.458 --> 00:04:19.170
+On the right is your Lab Notebook: fill in the worksheet, pin important outputs as evidence,
+
+58
+00:04:19.170 --> 00:04:23.256
+and press Check my answers to see what to look at again.
+
+59
+00:04:24.355 --> 00:04:25.123
+Your turn.
+
+60
+00:04:25.123 --> 00:04:28.499
+In the CTM Virtual Lab, choose Activity 2.4.
+
+61
+00:04:28.499 --> 00:04:31.876
+Read log underscore counter dot py with cat,
+
+62
+00:04:31.876 --> 00:04:37.708
+and answer the three questions in your Lab Notebook before you run anything.
+
+63
+00:04:37.708 --> 00:04:44.154
+Then run it with python3 on web underscore access dot log, record the top three IPs,
+
+64
+00:04:44.154 --> 00:04:47.915
+and compare them with your Activity 2.3 findings.
+
+65
+00:04:47.915 --> 00:04:55.052
+When all four activities are done, press Export notebook and submit the file to your trainer.
+

@@ -1,0 +1,90 @@
+WEBVTT
+
+1
+00:00:00.400 --> 00:00:06.475
+Performance criterion 4.2: check the security solution's scan logs for failed actions.
+
+2
+00:00:06.475 --> 00:00:10.148
+A failed action means the threat may still be there.
+
+3
+00:00:10.148 --> 00:00:16.648
+In this demonstration I search the school's scan log for the five failure events in the SOP.
+
+4
+00:00:17.747 --> 00:00:19.884
+Rule F2 lists them.
+
+5
+00:00:19.884 --> 00:00:24.158
+1118 and 1119: the remediation failed.
+
+6
+00:00:24.158 --> 00:00:28.657
+1002: a scan stopped before it finished.
+
+7
+00:00:28.657 --> 00:00:31.131
+1005: the scan failed.
+
+8
+00:00:31.131 --> 00:00:33.830
+2001: the update failed.
+
+9
+00:00:33.830 --> 00:00:42.827
+Everything else, like 1001 scan finished or 1117 action taken, is not a failure.
+
+10
+00:00:43.927 --> 00:00:49.971
+grep dash E with the five IDs between commas finds only those event IDs.
+
+11
+00:00:49.971 --> 00:00:56.855
+Two failures: REG-PC-01 could not quarantine a trojan because the file was in use,
+
+12
+00:00:56.855 --> 00:01:01.975
+and on MKT-PC-04 the scan itself failed with an engine error.
+
+13
+00:01:03.075 --> 00:01:11.042
+To be sure nothing is hidden, Group-Object counts every event ID in the log.
+
+14
+00:01:11.042 --> 00:01:14.711
+Four lines: 1001, 1118, 1005, 2000.
+
+15
+00:01:14.711 --> 00:01:17.331
+Two of them are failures.
+
+16
+00:01:18.431 --> 00:01:20.894
+Two failed actions to escalate.
+
+17
+00:01:20.894 --> 00:01:25.103
+Which person gets each one is the next demonstration.
+
+18
+00:01:26.203 --> 00:01:27.113
+Your turn.
+
+19
+00:01:27.113 --> 00:01:32.022
+In the CTM Virtual Lab, choose Day 9 and Activity 9.2.
+
+20
+00:01:32.022 --> 00:01:35.749
+Thirteen lines from the bank's scan logs.
+
+21
+00:01:35.749 --> 00:01:38.022
+Find every failed action.
+
+22
+00:01:38.022 --> 00:01:42.932
+Watch out for events that look scary but mean success.
+

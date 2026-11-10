@@ -1,0 +1,126 @@
+WEBVTT
+
+1
+00:00:00.400 --> 00:00:05.296
+Question three: can the solution clean or delete the issue?
+
+2
+00:00:05.296 --> 00:00:12.849
+And to finish, I run the whole status check on one workstation with PowerShell, WKS-TRN-07,
+
+3
+00:00:12.849 --> 00:00:17.247
+exactly as you will on your own seat in Activity 7.4.
+
+4
+00:00:18.347 --> 00:00:19.817
+Is it installed?
+
+5
+00:00:19.817 --> 00:00:22.664
+Get-Service lists the services.
+
+6
+00:00:22.664 --> 00:00:27.808
+CSFalconService, the CrowdStrike EDR sensor, is running.
+
+7
+00:00:27.808 --> 00:00:29.645
+WazuhSvc is running.
+
+8
+00:00:29.645 --> 00:00:33.502
+WinDefend, Microsoft Defender, is running.
+
+9
+00:00:33.502 --> 00:00:37.451
+All three required solutions are installed.
+
+10
+00:00:38.551 --> 00:00:40.303
+Is Defender operational?
+
+11
+00:00:40.303 --> 00:00:47.311
+Real-time protection true, tamper protection true, and the signatures were updated this morning.
+
+12
+00:00:48.411 --> 00:00:55.784
+A running service does not prove the Wazuh agent is talking to the SIEM, so I read the last lines of its log.
+
+13
+00:00:55.784 --> 00:01:00.315
+Keep alive acknowledged by manager at nine thirty: it is connected.
+
+14
+00:01:01.415 --> 00:01:03.019
+Now question three.
+
+15
+00:01:03.019 --> 00:01:08.757
+Get-MpPreference shows what Defender will do when it finds a threat.
+
+16
+00:01:08.757 --> 00:01:11.880
+Severe threats: action three, remove.
+
+17
+00:01:11.880 --> 00:01:15.931
+But high threats: action six, which means allow.
+
+18
+00:01:15.931 --> 00:01:20.825
+A trojan rated High would be detected and then left alone.
+
+19
+00:01:20.825 --> 00:01:22.935
+Defender cannot clean it.
+
+20
+00:01:22.935 --> 00:01:24.792
+No folder is excluded.
+
+21
+00:01:25.891 --> 00:01:29.171
+Here is the status check for WKS-TRN-07.
+
+22
+00:01:29.171 --> 00:01:35.649
+Everything is installed and operational, but the clean-up policy fails rule C1.
+
+23
+00:01:35.649 --> 00:01:38.109
+I report it to the Shift Lead.
+
+24
+00:01:38.109 --> 00:01:40.896
+I do not change the policy myself.
+
+25
+00:01:40.896 --> 00:01:50.736
+Remember the other two reasons a solution cannot clean: an exclusion on the threat's folder, or EDR in detect-only mode.
+
+26
+00:01:50.736 --> 00:01:54.835
+And ransomware or a rootkit always means re-image.
+
+27
+00:01:55.935 --> 00:01:56.783
+Your turn.
+
+28
+00:01:56.783 --> 00:01:59.918
+In the CTM Virtual Lab, choose Day 7.
+
+29
+00:01:59.918 --> 00:02:08.899
+In Activity 7.3, decide for eight detections whether the solution can clean them, from each host's policy.
+
+30
+00:02:08.899 --> 00:02:14.830
+Then in Activity 7.4, run these four commands on your own workstation.
+
+31
+00:02:14.830 --> 00:02:16.863
+Every seat is different.
+

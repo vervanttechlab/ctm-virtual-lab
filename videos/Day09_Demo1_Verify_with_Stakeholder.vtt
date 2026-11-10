@@ -1,0 +1,98 @@
+WEBVTT
+
+1
+00:00:00.400 --> 00:00:03.857
+A case is not finished when the antivirus says done.
+
+2
+00:00:03.857 --> 00:00:09.309
+It is finished when the person who owns the computer confirms the problem is gone.
+
+3
+00:00:09.309 --> 00:00:14.295
+In this demonstration I follow up two school cases with their stakeholders.
+
+4
+00:00:15.396 --> 00:00:18.770
+The two cases waiting for confirmation.
+
+5
+00:00:18.770 --> 00:00:23.876
+DC-1, the ransomware on the library PC, which IT re-imaged.
+
+6
+00:00:23.876 --> 00:00:30.972
+DC-2, a potentially unwanted program on a computer lab PC, blocked before install.
+
+7
+00:00:32.072 --> 00:00:39.766
+I call each stakeholder on the directory number and tell them, in plain words: what we found, what was done,
+
+8
+00:00:39.766 --> 00:00:41.334
+and what they must do.
+
+9
+00:00:41.334 --> 00:00:52.448
+For the librarian: we found ransomware on the library PC; IT rebuilt it and restored your files from last night's backup; please check that your files open.
+
+10
+00:00:52.448 --> 00:00:54.800
+Then I ask: is everything normal?
+
+11
+00:00:55.899 --> 00:00:57.693
+Here are their replies.
+
+12
+00:00:57.693 --> 00:01:01.981
+Joy Santos confirms: the PC is back and her files open.
+
+13
+00:01:01.981 --> 00:01:08.451
+The lab custodian says students still see a Free Converter window when they log in.
+
+14
+00:01:09.552 --> 00:01:14.160
+Rule F1.4 tells me what to do with each reply.
+
+15
+00:01:15.260 --> 00:01:19.083
+So DC-1 is closed, with who confirmed it and when.
+
+16
+00:01:19.083 --> 00:01:20.460
+DC-2 is re-opened.
+
+17
+00:01:20.460 --> 00:01:29.561
+The installer was blocked, but something is still running at login, so the host goes back for a re-check like on Day 8.
+
+18
+00:01:29.561 --> 00:01:34.532
+Without the call, we would have closed a case that is not solved.
+
+19
+00:01:35.632 --> 00:01:36.580
+Your turn.
+
+20
+00:01:36.580 --> 00:01:41.703
+In the CTM Virtual Lab, choose Day 9 and Activity 9.1.
+
+21
+00:01:41.703 --> 00:01:43.221
+Five bank cases.
+
+22
+00:01:43.221 --> 00:01:51.095
+Find each stakeholder in the directory, read the replies, and decide the next step.
+
+23
+00:01:51.095 --> 00:01:53.941
+One stakeholder never answers.
+
+24
+00:01:53.941 --> 00:01:55.743
+Count the attempts.
+

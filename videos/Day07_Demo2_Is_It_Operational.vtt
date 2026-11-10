@@ -1,0 +1,114 @@
+WEBVTT
+
+1
+00:00:00.400 --> 00:00:04.956
+Question two: an installed solution is not always a working one.
+
+2
+00:00:04.956 --> 00:00:11.790
+In this demonstration I check the school's agents against the six operational checks in the SOP.
+
+3
+00:00:11.790 --> 00:00:13.072
+It is nine thirty.
+
+4
+00:00:14.172 --> 00:00:16.468
+The six checks, B1 to B6.
+
+5
+00:00:16.468 --> 00:00:17.938
+Service running.
+
+6
+00:00:17.938 --> 00:00:21.521
+Real-time protection on, for antivirus.
+
+7
+00:00:21.521 --> 00:00:24.920
+A check-in in the last sixty minutes.
+
+8
+00:00:24.920 --> 00:00:31.442
+Content no more than three days old, so dated November second or later.
+
+9
+00:00:31.442 --> 00:00:33.279
+A supported version.
+
+10
+00:00:33.279 --> 00:00:35.576
+And tamper protection on.
+
+11
+00:00:35.576 --> 00:00:38.700
+One failure means not operational.
+
+12
+00:00:39.799 --> 00:00:44.239
+The health export, as a table on the Windows workstation.
+
+13
+00:00:48.350 --> 00:00:50.564
+DH-1 passes everything.
+
+14
+00:00:50.564 --> 00:00:57.017
+DH-2 is the antivirus on the registrar's PC: running, real-time on,
+
+15
+00:00:57.017 --> 00:01:02.795
+but its signatures are from October thirtieth, six days old.
+
+16
+00:01:02.795 --> 00:01:08.188
+It fails B4, so it cannot recognise this week's malware.
+
+17
+00:01:08.188 --> 00:01:15.892
+DH-3, the EDR on the same PC, is stopped and has not checked in since six forty.
+
+18
+00:01:15.892 --> 00:01:17.722
+It fails B1 and B3.
+
+19
+00:01:17.722 --> 00:01:18.878
+DH-4 passes.
+
+20
+00:01:19.978 --> 00:01:24.637
+So the registrar's PC, a Tier 1 computer with student records,
+
+21
+00:01:24.637 --> 00:01:29.146
+is protected by an out-of-date antivirus and no working EDR.
+
+22
+00:01:29.146 --> 00:01:34.858
+Two lines in the report, both to the Shift Lead, each with its failed check.
+
+23
+00:01:35.958 --> 00:01:36.869
+Your turn.
+
+24
+00:01:36.869 --> 00:01:41.791
+In the CTM Virtual Lab, choose Day 7 and Activity 7.2.
+
+25
+00:01:41.791 --> 00:01:44.982
+Fourteen agent checks for the bank.
+
+26
+00:01:44.982 --> 00:01:47.990
+Apply all six checks to each one.
+
+27
+00:01:47.990 --> 00:01:53.003
+One failure is explained by something you did on Day 5.
+
+28
+00:01:53.003 --> 00:01:54.462
+Can you find it?
+

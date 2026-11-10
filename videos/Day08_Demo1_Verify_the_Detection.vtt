@@ -1,0 +1,126 @@
+WEBVTT
+
+1
+00:00:00.400 --> 00:00:02.842
+A console says: malware found.
+
+2
+00:00:02.842 --> 00:00:03.900
+Is it really?
+
+3
+00:00:03.900 --> 00:00:06.505
+Today we check things ourselves.
+
+4
+00:00:06.505 --> 00:00:13.180
+In this demonstration I verify three detections from the school using file hashes.
+
+5
+00:00:13.180 --> 00:00:20.100
+A hash is a fingerprint of a file: change one byte and the whole fingerprint changes.
+
+6
+00:00:20.100 --> 00:00:23.112
+Computing a hash only reads the file.
+
+7
+00:00:23.112 --> 00:00:24.496
+It never runs it.
+
+8
+00:00:25.595 --> 00:00:35.459
+First, what the console reported: the detection ID, the host, the threat name, and the SHA-256 hash the console saw.
+
+9
+00:00:36.559 --> 00:00:40.295
+Now I compute the hashes myself with sha256sum.
+
+10
+00:00:40.295 --> 00:00:47.767
+Remember, in this lab the samples are harmless text files that stand in for the real programs.
+
+11
+00:00:48.867 --> 00:00:49.935
+Compare them.
+
+12
+00:00:49.935 --> 00:00:55.189
+DV-1 starts with one six f three seven: the same as the console.
+
+13
+00:00:55.189 --> 00:00:59.130
+DV-2 starts with seven zero nine zero: the same.
+
+14
+00:00:59.130 --> 00:01:06.109
+But DV-3 starts with two zero five one on disk, while the console saw zero e a seven.
+
+15
+00:01:06.109 --> 00:01:09.311
+The file changed after it was detected.
+
+16
+00:01:09.311 --> 00:01:17.932
+That is a hash mismatch: I cannot trust the old detection, so I record it and escalate it for a re-check.
+
+17
+00:01:19.031 --> 00:01:25.494
+Next, I look up the hashes that match in the threat intelligence list.
+
+18
+00:01:25.494 --> 00:01:31.310
+DV-1, one six f three seven, is there: Ransom Win32 Crypt nine.
+
+19
+00:01:31.310 --> 00:01:33.525
+A known ransomware file.
+
+20
+00:01:33.525 --> 00:01:35.280
+Verified malicious.
+
+21
+00:01:36.379 --> 00:01:40.211
+DV-2, seven zero nine zero: grep prints nothing.
+
+22
+00:01:40.211 --> 00:01:47.875
+It is not in the threat intelligence list, and the school has no known-good entry for it either.
+
+23
+00:01:47.875 --> 00:01:55.219
+I cannot prove it is bad or good, so the SOP says: unknown, escalate to Tier 2 for analysis.
+
+24
+00:01:56.319 --> 00:01:58.316
+Here are my three verdicts.
+
+25
+00:01:58.316 --> 00:02:05.487
+Three detections, three different answers, and none of them came from trusting the console alone.
+
+26
+00:02:06.587 --> 00:02:07.387
+Your turn.
+
+27
+00:02:07.387 --> 00:02:11.707
+In the CTM Virtual Lab, choose Day 8 and Activity 8.1.
+
+28
+00:02:11.707 --> 00:02:14.108
+Five detections from the bank.
+
+29
+00:02:14.108 --> 00:02:17.628
+Hash every sample, compare with the console,
+
+30
+00:02:17.628 --> 00:02:24.908
+then look each hash up in the threat intelligence list and in the vendor's known-good list.
+
+31
+00:02:24.908 --> 00:02:27.468
+One of them is a false positive.
+

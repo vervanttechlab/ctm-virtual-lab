@@ -1,0 +1,154 @@
+WEBVTT
+
+1
+00:00:00.400 --> 00:00:01.340
+Welcome back!
+
+2
+00:00:01.340 --> 00:00:06.619
+Yesterday we received the school's alerts and checked them for red flags.
+
+3
+00:00:06.619 --> 00:00:08.138
+Today we assess them.
+
+4
+00:00:08.138 --> 00:00:15.226
+Assessing means asking the same five questions, in the same order, for every alert: is it routine,
+
+5
+00:00:15.226 --> 00:00:22.603
+what really happened, how dangerous is it, how important is the computer, and therefore what priority,
+
+6
+00:00:22.603 --> 00:00:24.484
+and does it need a ticket.
+
+7
+00:00:24.484 --> 00:00:27.087
+Let's do it for the six demo alerts.
+
+8
+00:00:28.187 --> 00:00:31.972
+This is the priority matrix from SOC-SOP-02.
+
+9
+00:00:31.972 --> 00:00:36.960
+The threat level is the row, the asset tier is the column.
+
+10
+00:00:36.960 --> 00:00:39.971
+A critical threat is P1 everywhere.
+
+11
+00:00:39.971 --> 00:00:46.164
+A high threat is P1 on a Tier 1 computer but P2 on a Tier 2 workstation.
+
+12
+00:00:47.263 --> 00:00:49.229
+Now what really happened.
+
+13
+00:00:49.229 --> 00:00:53.002
+The rule name only says what the tool suspected.
+
+14
+00:00:53.002 --> 00:00:55.360
+The details say what happened.
+
+15
+00:00:55.360 --> 00:01:01.255
+Format-List shows every alert in full, so the long details are not cut off.
+
+16
+00:01:02.355 --> 00:01:07.199
+D5-06 is a Wazuh agent keep-alive: routine, rule RT6.
+
+17
+00:01:07.199 --> 00:01:09.209
+Record it and move on.
+
+18
+00:01:09.209 --> 00:01:23.007
+D5-01 looked like a brute force, but the details say the registrar typed her password at her own desk with Caps Lock on, and she confirmed it by phone.
+
+19
+00:01:23.007 --> 00:01:27.119
+Nothing malicious happened: a false positive.
+
+20
+00:01:27.119 --> 00:01:29.221
+No priority, no ticket.
+
+21
+00:01:29.221 --> 00:01:36.531
+D5-03, inbound SSH from the internet, was denied: a blocked attempt, low threat.
+
+22
+00:01:37.632 --> 00:01:40.039
+Three alerts are confirmed.
+
+23
+00:01:40.039 --> 00:01:49.314
+D5-02 and D5-05 are red flags, ransomware and a file-infecting virus: always confirmed, always critical.
+
+24
+00:01:49.314 --> 00:01:57.786
+And D5-04: the student grades file really left the school, because the DLP policy only watches.
+
+25
+00:01:57.786 --> 00:02:03.048
+Sensitive data that left the organization is a high threat.
+
+26
+00:02:04.147 --> 00:02:09.273
+Last criterion: how important is each computer?
+
+27
+00:02:09.273 --> 00:02:12.545
+The asset list gives the tier.
+
+28
+00:02:12.545 --> 00:02:17.889
+REG-PC-01 holds student records, so it is Tier 1.
+
+29
+00:02:17.889 --> 00:02:21.706
+LIB-PC-02 and MKT-PC-04 are Tier 2.
+
+30
+00:02:21.706 --> 00:02:25.195
+The internet firewall is Tier 1.
+
+31
+00:02:26.295 --> 00:02:28.886
+Here is the finished assessment.
+
+32
+00:02:28.886 --> 00:02:35.606
+Notice D5-04: a high threat on a Tier 1 computer is P1, the same as the ransomware.
+
+33
+00:02:35.606 --> 00:02:44.593
+And D5-03 is only P3 even though the firewall is Tier 1, because the attempt was blocked and the threat is low.
+
+34
+00:02:44.593 --> 00:02:51.231
+Three confirmed detections are three different incidents, so I open three tickets.
+
+35
+00:02:52.331 --> 00:02:53.165
+Your turn.
+
+36
+00:02:53.165 --> 00:02:57.669
+In the CTM Virtual Lab, choose Day 6 and Activity 6.1.
+
+37
+00:02:57.669 --> 00:03:05.674
+Assess all thirteen alerts from yesterday's queue: detection, threat, tier, priority and ticket.
+
+38
+00:03:05.674 --> 00:03:10.427
+Careful: alerts about the same incident share one ticket.
+

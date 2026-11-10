@@ -1,0 +1,126 @@
+WEBVTT
+
+1
+00:00:00.400 --> 00:00:05.684
+WKS-TRN-07 is behaving strangely and we think it is infected.
+
+2
+00:00:05.684 --> 00:00:11.055
+Performance criteria 3.3 and 3.4: check and patch the updates,
+
+3
+00:00:11.055 --> 00:00:16.166
+then use the security solution to scan the infected system.
+
+4
+00:00:16.166 --> 00:00:20.152
+Watch what happens if I take a shortcut first.
+
+5
+00:00:21.251 --> 00:00:23.359
+First the versions.
+
+6
+00:00:23.359 --> 00:00:25.909
+Signatures 1.421.112.0.
+
+7
+00:00:25.909 --> 00:00:35.669
+The vendor bulletin says the latest is 1.421.130.0, so these signatures are out of date.
+
+8
+00:00:35.669 --> 00:00:41.435
+The engine and platform versions match the bulletin.
+
+9
+00:00:42.535 --> 00:00:46.186
+The shortcut: a quick scan with the old signatures.
+
+10
+00:00:46.186 --> 00:00:47.402
+No threats found.
+
+11
+00:00:47.402 --> 00:00:54.345
+It is tempting to write clean in the log, but a quick scan only looks in the usual hiding places,
+
+12
+00:00:54.345 --> 00:00:58.567
+and yesterday's signatures do not know this week's threats.
+
+13
+00:00:59.667 --> 00:01:01.732
+The SOP way.
+
+14
+00:01:01.732 --> 00:01:08.098
+Rule V3: update the signatures first.
+
+15
+00:01:08.098 --> 00:01:14.979
+They go from 1.421.112.0 to 1.421.130.0.
+
+16
+00:01:16.079 --> 00:01:20.643
+Rule V4: on an infected system, run a full scan.
+
+17
+00:01:20.643 --> 00:01:25.871
+This time Defender finds a threat: Trojan Win32 Vigorf.
+
+18
+00:01:26.971 --> 00:01:28.219
+Now verify.
+
+19
+00:01:28.219 --> 00:01:33.209
+The newest event first: scan finished, 1001.
+
+20
+00:01:33.209 --> 00:01:35.931
+Then 1117, action taken.
+
+21
+00:01:35.931 --> 00:01:38.312
+Then 1116, detection.
+
+22
+00:01:38.312 --> 00:01:43.075
+The full scan found it and quarantined it.
+
+23
+00:01:44.175 --> 00:01:52.636
+And the host itself: the file was in the user's AppData Roaming Updater folder, a place a quick scan does not check.
+
+24
+00:01:52.636 --> 00:01:55.990
+Test-Path says False: the file is really gone.
+
+25
+00:01:55.990 --> 00:01:59.199
+Now I can record the result with confidence.
+
+26
+00:02:00.299 --> 00:02:01.195
+Your turn.
+
+27
+00:02:01.195 --> 00:02:04.507
+In the CTM Virtual Lab, choose Day 8.
+
+28
+00:02:04.507 --> 00:02:11.758
+In Activity 8.3, check the bank's update versions and patch your own workstation.
+
+29
+00:02:11.758 --> 00:02:20.620
+Then in Activity 8.4, your workstation is infected: update, run a full scan, and verify the result.
+
+30
+00:02:20.620 --> 00:02:23.395
+On some seats the action fails.
+
+31
+00:02:23.395 --> 00:02:25.811
+If yours does, escalate it.
+

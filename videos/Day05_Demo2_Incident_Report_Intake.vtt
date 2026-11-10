@@ -1,0 +1,158 @@
+WEBVTT
+
+1
+00:00:00.400 --> 00:00:03.183
+Not every threat comes from a tool.
+
+2
+00:00:03.183 --> 00:00:08.910
+People call, walk in, email, text, chat, or tell us during a video call.
+
+3
+00:00:08.910 --> 00:00:17.023
+In this demonstration I receive three reports from a school, record each one the way our SOP requires,
+
+4
+00:00:17.023 --> 00:00:19.410
+and decide what to do with it.
+
+5
+00:00:19.410 --> 00:00:21.159
+One of them is a trap.
+
+6
+00:00:22.259 --> 00:00:26.230
+First, which channel did each report come from?
+
+7
+00:00:26.230 --> 00:00:31.636
+grep with dash E finds the report headers and the CHANNEL lines.
+
+8
+00:00:31.636 --> 00:00:35.100
+A phone call, an SMS, and a chat message.
+
+9
+00:00:36.199 --> 00:00:40.203
+Report DR-1, a phone call from the school library.
+
+10
+00:00:40.203 --> 00:00:45.008
+Grep dash A seven shows the header and the next seven lines.
+
+11
+00:00:45.008 --> 00:00:54.216
+The caller's Word files now end in dot crypt nine, and a file called HOW TO GET FILES BACK appeared on the desktop.
+
+12
+00:00:54.216 --> 00:01:01.263
+Files renamed with one new extension, plus a ransom note: those are red flags R1 and R2.
+
+13
+00:01:01.263 --> 00:01:02.143
+Ransomware.
+
+14
+00:01:03.243 --> 00:01:06.552
+For a ransomware red flag the SOP is clear.
+
+15
+00:01:06.552 --> 00:01:13.938
+I ask the caller to unplug the network cable or turn off the Wi-Fi, and not to shut the PC down,
+
+16
+00:01:13.938 --> 00:01:17.093
+because evidence in memory would be lost.
+
+17
+00:01:17.093 --> 00:01:20.017
+Never pay, never contact the attacker.
+
+18
+00:01:20.017 --> 00:01:24.171
+Then I phone the Shift Lead right away, and record it.
+
+19
+00:01:25.271 --> 00:01:27.016
+Report DR-2 is an SMS.
+
+20
+00:01:27.016 --> 00:01:37.007
+Someone who says she is Ma'am Tess from the Registrar asks me to reset her password and text her the new password and the OTP.
+
+21
+00:01:38.107 --> 00:01:40.646
+Rule B3 of the SOP answers this.
+
+22
+00:01:40.646 --> 00:01:44.693
+Never ask for or give a password or a one-time PIN.
+
+23
+00:01:44.693 --> 00:01:50.088
+A request like this is itself a possible social engineering attempt.
+
+24
+00:01:50.088 --> 00:01:51.596
+So I do not comply.
+
+25
+00:01:51.596 --> 00:01:59.371
+I call back on the number in the school directory, not the number that texted me, and I report it.
+
+26
+00:02:00.471 --> 00:02:02.353
+Report DR-3, a chat.
+
+27
+00:02:02.353 --> 00:02:06.209
+The projector in Room 204 has no display.
+
+28
+00:02:06.209 --> 00:02:10.912
+That is a hardware problem, not a security matter.
+
+29
+00:02:10.912 --> 00:02:16.743
+Rule B4: record it and redirect the person to the IT Helpdesk.
+
+30
+00:02:17.843 --> 00:02:20.276
+Here are my three intake records.
+
+31
+00:02:20.276 --> 00:02:27.058
+For every report I wrote the channel, the reporter and a callback number from the directory,
+
+32
+00:02:27.058 --> 00:02:31.628
+the affected device, the type, and the next step from the SOP.
+
+33
+00:02:31.628 --> 00:02:37.451
+I record only the personal data the SOP needs, because of the Data Privacy Act.
+
+34
+00:02:38.551 --> 00:02:39.430
+Your turn.
+
+35
+00:02:39.430 --> 00:02:44.173
+In the CTM Virtual Lab, choose Day 5 and Activity 5.2.
+
+36
+00:02:44.173 --> 00:02:50.498
+There are six reports, one for each channel in the Competency Standards.
+
+37
+00:02:50.498 --> 00:02:55.681
+Record each one, classify it, and choose the SOP next step.
+
+38
+00:02:55.681 --> 00:02:59.458
+Two of them match alerts from Activity 5.1.
+
+39
+00:02:59.458 --> 00:03:01.039
+Can you find them?
+

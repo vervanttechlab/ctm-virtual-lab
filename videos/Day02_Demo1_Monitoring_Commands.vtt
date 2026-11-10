@@ -1,0 +1,322 @@
+WEBVTT
+
+1
+00:00:00.400 --> 00:00:01.300
+Hi trainees!
+
+2
+00:00:01.300 --> 00:00:09.631
+In this demonstration I will check two lab machines, the way a Level 1 analyst does when an alert names a host.
+
+3
+00:00:09.631 --> 00:00:13.908
+First a Windows workstation, then an Ubuntu Linux server.
+
+4
+00:00:13.908 --> 00:00:18.486
+Watch the commands, and watch the analyst notes on the right,
+
+5
+00:00:18.486 --> 00:00:23.440
+because Activity 2.1 asks you to collect exactly this information.
+
+6
+00:00:24.539 --> 00:00:29.826
+Question one: what is this machine's network identity?
+
+7
+00:00:29.826 --> 00:00:31.882
+I type ipconfig /all.
+
+8
+00:00:31.882 --> 00:00:36.777
+The host name is W K S dash T R N dash zero seven.
+
+9
+00:00:36.777 --> 00:00:39.909
+The IPv4 address is 10.10.20.57.
+
+10
+00:00:39.909 --> 00:00:45.489
+It starts with ten, so it is a private, internal address.
+
+11
+00:00:45.489 --> 00:00:54.300
+The default gateway, 10.10.20.1, is the router this computer uses to reach other networks.
+
+12
+00:00:54.300 --> 00:00:56.747
+I write both in my notes.
+
+13
+00:00:57.847 --> 00:01:02.274
+Question two: what is this computer listening for?
+
+14
+00:01:02.274 --> 00:01:08.560
+netstat -ano shows connections, with the process ID in the last column.
+
+15
+00:01:08.560 --> 00:01:15.731
+I pipe it to findstr LISTENING, so I only see open ports waiting for connections.
+
+16
+00:01:15.731 --> 00:01:21.662
+Ports 135 and 445 are normal Windows services; 445 is file sharing.
+
+17
+00:01:21.662 --> 00:01:23.610
+But look at port 3389.
+
+18
+00:01:23.610 --> 00:01:25.646
+That is Remote Desktop.
+
+19
+00:01:25.646 --> 00:01:30.073
+Is Remote Desktop supposed to be on a workstation?
+
+20
+00:01:30.073 --> 00:01:36.535
+The PID column says process 1180 owns it, so let's find out what that is.
+
+21
+00:01:37.635 --> 00:01:45.497
+tasklist with slash S V C shows the services inside a process, and the filter picks only PID 1180.
+
+22
+00:01:45.497 --> 00:01:50.550
+It is svchost, hosting TermService, the Remote Desktop service.
+
+23
+00:01:50.550 --> 00:01:54.481
+So Remote Desktop is enabled on this workstation.
+
+24
+00:01:54.481 --> 00:01:59.053
+That is not automatically an attack, but it is a finding.
+
+25
+00:01:59.053 --> 00:02:04.347
+I note it, and later I check it against the organization's policy.
+
+26
+00:02:05.447 --> 00:02:08.121
+Question three: what is running?
+
+27
+00:02:08.121 --> 00:02:11.714
+In PowerShell, Get-Process lists processes.
+
+28
+00:02:11.714 --> 00:02:15.140
+I sort them by CPU and show the top five.
+
+29
+00:02:15.140 --> 00:02:19.401
+MsMpEng is the Microsoft Defender antivirus engine.
+
+30
+00:02:19.401 --> 00:02:22.159
+Good, the security tool is alive.
+
+31
+00:02:22.159 --> 00:02:26.587
+Explorer, Edge and OneDrive are normal user programs.
+
+32
+00:02:26.587 --> 00:02:34.775
+A strange name, or a program running from a temp or Downloads folder, would deserve a closer look.
+
+33
+00:02:35.876 --> 00:02:38.683
+Question four: what system is this?
+
+34
+00:02:38.683 --> 00:02:46.544
+systeminfo prints a lot, so I filter for three lines: the OS name, the version, and the boot time.
+
+35
+00:02:46.544 --> 00:02:51.758
+Windows 11 Enterprise, build 22631, started at 7:42 this morning.
+
+36
+00:02:51.758 --> 00:03:00.019
+The version matters, because later in the course you will match versions against known vulnerabilities.
+
+37
+00:03:01.120 --> 00:03:03.515
+Question five: who is logged in?
+
+38
+00:03:03.515 --> 00:03:11.448
+query user shows trainee07, on the console, which means someone sitting at the machine, logged on at 7:44.
+
+39
+00:03:11.448 --> 00:03:18.784
+If an alert came from this PC at two in the morning, this is how you would check who was using it.
+
+40
+00:03:19.884 --> 00:03:24.831
+Now the same five questions on the Ubuntu Linux lab VM.
+
+41
+00:03:24.831 --> 00:03:28.249
+The Linux version of ipconfig is ip a.
+
+42
+00:03:28.249 --> 00:03:33.916
+Ignore lo, that is the loopback, the machine talking to itself.
+
+43
+00:03:33.916 --> 00:03:41.652
+The real network card is E N P zero S three, and its address is 10.10.20.80, slash 24.
+
+44
+00:03:42.752 --> 00:03:46.449
+Linux shows the gateway in its routing table.
+
+45
+00:03:46.449 --> 00:03:51.543
+ip route, piped to grep default, shows default via 10.10.20.1.
+
+46
+00:03:51.543 --> 00:03:58.855
+That is the same router as the Windows workstation, so both machines are on the same LAN.
+
+47
+00:03:59.956 --> 00:04:04.905
+Listening ports on Linux: ss -tunap, filtered for LISTEN.
+
+48
+00:04:04.905 --> 00:04:10.375
+I can see ports 53, 22 and 80, but the process column is empty.
+
+49
+00:04:10.375 --> 00:04:16.627
+Those services belong to root, and a normal user cannot see their names.
+
+50
+00:04:16.627 --> 00:04:23.140
+This is a very common stumbling block in Activity 2.1, so remember the fix.
+
+51
+00:04:24.240 --> 00:04:30.725
+I run it again with sudo, which means: run this as administrator.
+
+52
+00:04:30.725 --> 00:04:34.616
+Now the last column names each process.
+
+53
+00:04:34.616 --> 00:04:39.205
+Port 22 is sshd, the SSH remote login service.
+
+54
+00:04:39.205 --> 00:04:42.497
+Port 80 is apache2, a web server.
+
+55
+00:04:42.497 --> 00:04:45.790
+And 53 is the local DNS resolver.
+
+56
+00:04:45.790 --> 00:04:50.280
+For a lab web server, all three are expected.
+
+57
+00:04:51.379 --> 00:04:52.898
+What is running?
+
+58
+00:04:52.898 --> 00:04:55.460
+ps aux lists every process.
+
+59
+00:04:55.460 --> 00:05:00.205
+I sort it by CPU and keep the top lines with head.
+
+60
+00:05:00.205 --> 00:05:06.563
+Apache runs as the user www-data, which is normal for a web server.
+
+61
+00:05:06.563 --> 00:05:08.272
+sshd runs as root.
+
+62
+00:05:08.272 --> 00:05:14.155
+And the bash shell at the bottom is my own session as trainee.
+
+63
+00:05:15.255 --> 00:05:24.484
+System information: hostnamectl gives the host name, the operating system, Ubuntu 24.04, and the kernel version.
+
+64
+00:05:24.484 --> 00:05:30.087
+On older systems, uname dash A gives the kernel version in one line.
+
+65
+00:05:31.187 --> 00:05:34.501
+Finally, who is logged in, and who was?
+
+66
+00:05:34.501 --> 00:05:36.625
+last shows recent logins.
+
+67
+00:05:36.625 --> 00:05:40.363
+trainee is still logged in from 10.10.20.57.
+
+68
+00:05:40.363 --> 00:05:44.440
+That is the Windows workstation we just checked.
+
+69
+00:05:44.440 --> 00:05:51.492
+Connecting the dots from one host to another like this is exactly what analysts do.
+
+70
+00:05:52.591 --> 00:05:58.425
+This afternoon you will not need VirtualBox or a virtual machine on your own computer.
+
+71
+00:05:58.425 --> 00:06:00.867
+You practice in the CTM Virtual Lab.
+
+72
+00:06:00.867 --> 00:06:06.564
+Open the lab link from your trainer and sign in with your full name and seat number.
+
+73
+00:06:06.564 --> 00:06:12.805
+First try the mission Practice: Demo 1, which has the same workstation and VM as this video,
+
+74
+00:06:12.805 --> 00:06:14.840
+so your screen can match mine.
+
+75
+00:06:15.939 --> 00:06:16.696
+Your turn.
+
+76
+00:06:16.696 --> 00:06:20.025
+In the CTM Virtual Lab, choose Activity 2.1.
+
+77
+00:06:20.025 --> 00:06:28.951
+You get your own Windows workstation and your own Ubuntu VM, with values different from mine and from your classmates.
+
+78
+00:06:28.951 --> 00:06:36.063
+Run these commands on both hosts and record the results in the worksheet in your Lab Notebook.
+
+79
+00:06:36.063 --> 00:06:44.989
+Then answer the analysis question: which ports are listening, which service owns each one, and is anything unexpected?
+
+80
+00:06:44.989 --> 00:06:49.755
+Remember to use sudo with ss, and pin your outputs as evidence.
+

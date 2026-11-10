@@ -1,0 +1,130 @@
+WEBVTT
+
+1
+00:00:00.400 --> 00:00:04.905
+In this last Day 3 demonstration we do two things.
+
+2
+00:00:04.905 --> 00:00:08.690
+First, sort indicators into IOCs and IOAs.
+
+3
+00:00:08.690 --> 00:00:14.727
+Second, the method for finding the right MITRE ATT&CK technique ID,
+
+4
+00:00:14.727 --> 00:00:20.224
+which you will do on the real ATT&CK website in Activity 3.3.
+
+5
+00:00:21.323 --> 00:00:26.011
+These six indicators all come from the Enrollment Form case.
+
+6
+00:00:26.011 --> 00:00:29.604
+Remember the two definitions from the handout.
+
+7
+00:00:29.604 --> 00:00:36.947
+An IOC, indicator of compromise, is evidence that something bad already happened: a file hash,
+
+8
+00:00:36.947 --> 00:00:39.135
+a known bad IP, a file name.
+
+9
+00:00:39.135 --> 00:00:44.915
+An IOA, indicator of attack, is behavior that shows an attack in progress.
+
+10
+00:00:46.015 --> 00:00:47.319
+Here is my sorting.
+
+11
+00:00:47.319 --> 00:00:51.093
+The blocklisted IP, the scheduled task's name and path,
+
+12
+00:00:51.093 --> 00:00:56.926
+and the attachment's file name are IOCs: they are artifacts the attacker left behind.
+
+13
+00:00:56.926 --> 00:01:04.062
+wscript running a script from Downloads, one account logging in from two countries twenty minutes apart,
+
+14
+00:01:04.062 --> 00:01:10.376
+and wscript starting a hidden PowerShell are IOAs: they describe what the attacker is doing.
+
+15
+00:01:11.475 --> 00:01:13.418
+Why do analysts love IOAs?
+
+16
+00:01:13.418 --> 00:01:19.396
+Because the attacker can change an IP address, a file name or a hash in seconds.
+
+17
+00:01:19.396 --> 00:01:26.569
+But the behavior, an office script engine launching hidden PowerShell, is much harder to change.
+
+18
+00:01:26.569 --> 00:01:33.219
+A detection rule built on behavior keeps working when the attacker moves to a new server.
+
+19
+00:01:34.319 --> 00:01:36.332
+Now the ATT&CK method.
+
+20
+00:01:36.332 --> 00:01:41.364
+On attack dot mitre dot org, open Matrices, Enterprise.
+
+21
+00:01:41.364 --> 00:01:45.481
+First decide the tactic, the attacker's goal.
+
+22
+00:01:45.481 --> 00:01:51.153
+Then find the technique in that column, or use the search box.
+
+23
+00:01:51.153 --> 00:01:56.917
+Copy the ID exactly, including the sub-technique after the dot.
+
+24
+00:01:56.917 --> 00:02:03.138
+For example, wscript running JavaScript is Execution, T1059 dot 007.
+
+25
+00:02:03.138 --> 00:02:08.262
+A scheduled task at logon is Persistence, T1053 dot 005.
+
+26
+00:02:08.262 --> 00:02:13.934
+Calling home over HTTPS is Command and Control, T1071 dot 001.
+
+27
+00:02:13.934 --> 00:02:21.527
+On the technique page, scroll to Detection and Mitigations for your recommendation.
+
+28
+00:02:22.627 --> 00:02:23.518
+Your turn.
+
+29
+00:02:23.518 --> 00:02:33.043
+Activity 3.3 uses the real ATT&CK website in your browser: look up the six behaviors and record the tactic,
+
+30
+00:02:33.043 --> 00:02:35.980
+ID and name in your Lab Notebook.
+
+31
+00:02:35.980 --> 00:02:45.417
+Activity 3.4: sort the six indicators into IOC or IOA with your partner, and explain why IOAs last longer.
+
+32
+00:02:45.417 --> 00:02:49.867
+Both worksheets are in the CTM Virtual Lab, Day 3.
+

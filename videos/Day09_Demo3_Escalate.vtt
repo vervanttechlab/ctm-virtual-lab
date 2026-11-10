@@ -1,0 +1,126 @@
+WEBVTT
+
+1
+00:00:00.400 --> 00:00:06.563
+Performance criterion 4.3: escalate each failed action to the appropriate authority.
+
+2
+00:00:06.563 --> 00:00:13.606
+The Competency Standards list four: the IT department manager, the information security manager,
+
+3
+00:00:13.606 --> 00:00:18.962
+the security solution vendor, and the chief information security officer.
+
+4
+00:00:18.962 --> 00:00:20.943
+Our SOP says who gets what.
+
+5
+00:00:22.043 --> 00:00:23.601
+Here are the rules.
+
+6
+00:00:23.601 --> 00:00:28.519
+Check them in order, and the first one that matches decides.
+
+7
+00:00:28.519 --> 00:00:34.503
+E1: ransomware or confirmed data loss on a Tier 1 asset goes to the CISO.
+
+8
+00:00:34.503 --> 00:00:42.291
+E2: any other failure on a red flag or a Tier 1 asset goes to the information security manager.
+
+9
+00:00:42.291 --> 00:00:47.373
+E3: if the security product itself failed, open a vendor case.
+
+10
+00:00:47.373 --> 00:00:51.636
+E4: anything else goes to the IT department manager.
+
+11
+00:00:52.735 --> 00:00:54.316
+REG-PC-01 first.
+
+12
+00:00:54.316 --> 00:01:00.441
+It is not ransomware and no data loss is confirmed, so not E1.
+
+13
+00:01:00.441 --> 00:01:06.863
+But REG-PC-01 is the registrar's PC with student records: Tier 1.
+
+14
+00:01:06.863 --> 00:01:11.408
+Rule E2 matches: information security manager.
+
+15
+00:01:12.508 --> 00:01:13.787
+Now MKT-PC-04.
+
+16
+00:01:13.787 --> 00:01:18.720
+An engine error sounds like a vendor problem, rule E3.
+
+17
+00:01:18.720 --> 00:01:20.730
+But we check in order.
+
+18
+00:01:20.730 --> 00:01:26.668
+Remember Day 5: MKT-PC-04 had a file-infecting virus, a red flag.
+
+19
+00:01:26.668 --> 00:01:32.241
+So rule E2 matches first: information security manager again.
+
+20
+00:01:32.241 --> 00:01:40.372
+The vendor can be copied, but the person who decides is the information security manager.
+
+21
+00:01:41.472 --> 00:01:45.722
+Phone first, then the escalation record by email.
+
+22
+00:01:45.722 --> 00:01:47.544
+This is the template.
+
+23
+00:01:48.644 --> 00:01:51.108
+Here is my record for REG-PC-01.
+
+24
+00:01:51.108 --> 00:01:57.732
+The most important lines: the impact, what is still at risk, and what I need from her.
+
+25
+00:01:57.732 --> 00:02:05.280
+The target for the information security manager is thirty minutes, so if I called at twelve forty,
+
+26
+00:02:05.280 --> 00:02:07.051
+I follow up at one ten.
+
+27
+00:02:08.151 --> 00:02:09.051
+Your turn.
+
+28
+00:02:09.051 --> 00:02:12.380
+In the CTM Virtual Lab, choose Day 9.
+
+29
+00:02:12.380 --> 00:02:21.198
+In Activity 9.3, escalate the six failed actions from the bank and write the record for FIN-PC-03.
+
+30
+00:02:21.198 --> 00:02:25.337
+Check the tiers and the Day 5 red flags first.
+
+31
+00:02:25.337 --> 00:02:31.095
+Then in Activity 9.4, follow up your own workstation's scan log.
+

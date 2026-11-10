@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CTM Virtual Lab</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231F3864'/%3E%3Ctext x='5' y='22' font-family='Consolas,monospace' font-size='15' font-weight='bold' fill='%23F2C14E'%3E%3E_%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="Simulated Windows and Ubuntu lab hosts for Cyber Threat Monitoring Level I practice. Training data only." />
+  <script type="module" crossorigin src="./assets/index-D6vfVQ8e.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-UqWtVNtS.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">&gt;_</span>
+      <div><div class="brand-name">CTM Virtual Lab</div><div class="brand-sub">Cyber Threat Monitoring Level I</div></div>
+    </div>
+    <div class="pack" id="pack"></div>
+    <span class="chip-lab">LAB ONLY · TRAINING DATA</span>
+    <div class="spacer"></div>
+    <div class="who" id="who"></div>
+    <button class="btn" id="btn-export" title="Download your Lab Notebook as a Word file to submit">Export notebook</button>
+    <button class="btn ghost" id="btn-print" title="Open a printable copy (Save as PDF)">Print / PDF</button>
+    <button class="btn ghost" id="btn-social" hidden>👥 Team</button>
+    <button class="btn ghost" id="btn-report" hidden title="Trainer: who has signed in, who is following the demos, who has started each activity">Class report</button>
+    <button class="btn ghost" id="btn-user" title="Sign out or change seat">Switch user</button>
+  </header>
+  <main class="grid">
+    <aside class="missions" id="missions" aria-label="Missions"></aside>
+    <section class="center">
+      <div class="mission-head" id="mission-head"></div>
+      <div class="tabs" id="host-tabs" role="tablist"></div>
+      <div class="terms" id="terms"></div>
+      <div class="term-tools">
+        <button class="btn small" id="btn-pin-last">📌 Pin last output</button>
+        <button class="btn small ghost" id="btn-pin-sel">📌 Pin selection</button>
+        <span class="tip">Tab completes names · ↑ ↓ history · Ctrl+Shift+C copies · type <code>help</code> for commands</span>
+      </div>
+    </section>
+    <aside class="notebook" id="notebook" aria-label="Lab Notebook">
+      <div class="nb-tabs" id="nb-tabs" role="tablist"></div>
+      <div class="nb-body" id="nb-body"></div>
+    </aside>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog id="signin"></dialog>
+  <dialog id="video-dlg"></dialog>
+  <dialog id="report-dlg"></dialog>
+  <aside id="social" class="social" hidden aria-label="Who is online and team chat"></aside>
+</body>
+</html>

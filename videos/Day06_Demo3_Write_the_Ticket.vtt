@@ -1,0 +1,110 @@
+WEBVTT
+
+1
+00:00:00.400 --> 00:00:04.531
+A detection is confirmed, so now we issue the ticket.
+
+2
+00:00:04.531 --> 00:00:07.182
+That is Performance Criterion 1.5.
+
+3
+00:00:07.182 --> 00:00:10.924
+A ticket is the official record of one incident.
+
+4
+00:00:10.924 --> 00:00:17.394
+It must contain every alert and report about that incident, and facts, not guesses.
+
+5
+00:00:17.394 --> 00:00:22.696
+I will write the ticket for the ransomware on the school library PC.
+
+6
+00:00:23.795 --> 00:00:25.518
+First the template.
+
+7
+00:00:25.518 --> 00:00:34.675
+Ticket ID, title, opened, linked alerts, affected asset, category, priority, evidence, actions taken,
+
+8
+00:00:34.675 --> 00:00:36.851
+assigned to, and status.
+
+9
+00:00:37.951 --> 00:00:45.247
+Rule T2 says one ticket per incident, so I collect everything about LIB-PC-02.
+
+10
+00:00:45.247 --> 00:00:48.427
+In the queue there are two alerts.
+
+11
+00:00:48.427 --> 00:00:50.765
+D5-02 is the ransom note.
+
+12
+00:00:50.765 --> 00:00:57.967
+D5-06 is the agent keep-alive, routine, so it does not belong on this ticket.
+
+13
+00:00:59.067 --> 00:01:07.487
+The details of D5-02 give me the evidence: five files renamed to dot crypt nine by winhelper dot exe,
+
+14
+00:01:07.487 --> 00:01:09.987
+unsigned, and the ransom note.
+
+15
+00:01:11.087 --> 00:01:16.128
+And the librarian's phone call, report DR-1, is about the same PC.
+
+16
+00:01:16.128 --> 00:01:18.571
+It is linked to the same ticket.
+
+17
+00:01:18.571 --> 00:01:26.666
+During that call I told her to unplug the network cable and not to shut down, and I phoned the Shift Lead.
+
+18
+00:01:26.666 --> 00:01:28.727
+Those are my actions taken.
+
+19
+00:01:29.827 --> 00:01:32.034
+Here is the finished ticket.
+
+20
+00:01:32.034 --> 00:01:36.052
+Critical threat, so P1, assigned to the Shift Lead.
+
+21
+00:01:36.052 --> 00:01:42.198
+Status New: Level I opens and hands over, and never closes an incident ticket.
+
+22
+00:01:42.198 --> 00:01:50.707
+Notice what is not in it: no passwords, and only the personal data we need, because of the Data Privacy Act.
+
+23
+00:01:51.807 --> 00:01:52.712
+Your turn.
+
+24
+00:01:52.712 --> 00:01:56.057
+In the CTM Virtual Lab, choose Day 6.
+
+25
+00:01:56.057 --> 00:02:06.366
+In Activity 6.3, issue the ticket for the ransomware on FIN-PC-03: find every alert and the report about it first.
+
+26
+00:02:06.366 --> 00:02:12.605
+Then in Activity 6.4, triage the five alerts on your own workstation.
+
+27
+00:02:12.605 --> 00:02:14.776
+Every seat is different.
+

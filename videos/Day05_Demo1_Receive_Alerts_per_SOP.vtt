@@ -1,0 +1,174 @@
+WEBVTT
+
+1
+00:00:00.400 --> 00:00:02.136
+Good morning, trainees!
+
+2
+00:00:02.136 --> 00:00:06.439
+Today we start the heart of the job: checking for alerts.
+
+3
+00:00:06.439 --> 00:00:10.364
+In this demonstration it is nine thirty on my shift.
+
+4
+00:00:10.364 --> 00:00:19.197
+I open the SOC alert queue, compare every alert with the time limits in our SOP, and decide what I must handle first.
+
+5
+00:00:19.197 --> 00:00:25.311
+The demo alerts are different from the ones in Activity 5.1, so watch the method.
+
+6
+00:00:26.411 --> 00:00:27.726
+First, the SOP.
+
+7
+00:00:27.726 --> 00:00:33.511
+SOC-SOP-01, rule A2, says how fast I must acknowledge a new alert.
+
+8
+00:00:33.511 --> 00:00:43.854
+Critical within fifteen minutes, High within thirty, Medium within one hundred twenty, Low within four hundred eighty.
+
+9
+00:00:43.854 --> 00:00:47.710
+Informational alerts need no acknowledgment.
+
+10
+00:00:47.710 --> 00:00:51.567
+Waiting time is now minus the time received.
+
+11
+00:00:51.567 --> 00:00:54.371
+Over the limit is an SLA breach.
+
+12
+00:00:55.471 --> 00:00:59.421
+Now the demo queue on the Windows workstation.
+
+13
+00:00:59.421 --> 00:01:08.435
+Import-Csv reads the export, and Format-Table shows only the columns I need: ID, time received, severity,
+
+14
+00:01:08.435 --> 00:01:09.808
+host and status.
+
+15
+00:01:09.808 --> 00:01:10.753
+Six alerts.
+
+16
+00:01:10.753 --> 00:01:14.959
+Two are already Acknowledged, four are still New.
+
+17
+00:01:16.060 --> 00:01:19.912
+Let me check the two acknowledged alerts first.
+
+18
+00:01:19.912 --> 00:01:25.403
+D5-01 is Medium: received eight oh four, acknowledged eight thirty.
+
+19
+00:01:25.403 --> 00:01:29.583
+Twenty-six minutes, well within one hundred twenty.
+
+20
+00:01:29.583 --> 00:01:36.057
+D5-02 is Critical: received eight fifteen forty, acknowledged eight thirty-six.
+
+21
+00:01:36.057 --> 00:01:42.040
+That is almost twenty-one minutes, but the limit for Critical is fifteen.
+
+22
+00:01:42.040 --> 00:01:47.860
+That acknowledgment was late, an SLA breach, and I tell the Shift Lead.
+
+23
+00:01:48.960 --> 00:01:50.968
+Now only the New alerts.
+
+24
+00:01:50.968 --> 00:01:55.320
+Where-Object keeps the rows where status equals New.
+
+25
+00:01:57.360 --> 00:01:59.182
+It is nine thirty.
+
+26
+00:01:59.182 --> 00:02:07.383
+D5-03 is Low and has waited thirty-eight minutes: fine, the limit is eight hours.
+
+27
+00:02:07.383 --> 00:02:15.381
+D5-04 is High and has waited twenty-six minutes: only about three minutes left!
+
+28
+00:02:15.381 --> 00:02:19.735
+D5-05 is High and has waited eight minutes.
+
+29
+00:02:19.735 --> 00:02:24.696
+D5-06 is Informational: no acknowledgment needed.
+
+30
+00:02:25.796 --> 00:02:28.233
+But time is not the only rule.
+
+31
+00:02:28.233 --> 00:02:32.946
+Rule A4 says red flags go first, whatever the queue order.
+
+32
+00:02:32.946 --> 00:02:40.340
+On Linux I search the queue for the two red flag families in the SOP: ransomware and virus.
+
+33
+00:02:41.440 --> 00:02:43.452
+Here is my receipt log.
+
+34
+00:02:43.452 --> 00:02:51.500
+D5-05 is a red flag, a file-infecting virus, so I escalate it to the Shift Lead immediately.
+
+35
+00:02:51.500 --> 00:02:57.799
+Then, in the same minute, I acknowledge D5-04 before its limit runs out.
+
+36
+00:02:57.799 --> 00:03:03.049
+D5-02 was already handled, but late, so I report the breach.
+
+37
+00:03:03.049 --> 00:03:09.348
+Notice that I did not close, delete, or change the severity of anything.
+
+38
+00:03:09.348 --> 00:03:12.760
+Assessment and ticketing come tomorrow.
+
+39
+00:03:13.860 --> 00:03:14.727
+Your turn.
+
+40
+00:03:14.727 --> 00:03:19.415
+In the CTM Virtual Lab, choose Day 5 and Activity 5.1.
+
+41
+00:03:19.415 --> 00:03:22.105
+Your queue has thirteen alerts.
+
+42
+00:03:22.105 --> 00:03:30.438
+For each one, work out the minutes, decide whether it is within the SLA, and mark the red flags.
+
+43
+00:03:30.438 --> 00:03:35.820
+Then answer: which alert must you handle first at nine thirty?
+

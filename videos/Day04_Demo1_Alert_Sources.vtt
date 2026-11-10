@@ -1,0 +1,178 @@
+WEBVTT
+
+1
+00:00:00.400 --> 00:00:07.060
+A SIEM receives alerts from many security tools, and each tool rates severity in its own way.
+
+2
+00:00:07.060 --> 00:00:13.076
+In this demonstration I read a demo alert export, identify the source of each alert,
+
+3
+00:00:13.076 --> 00:00:18.949
+convert every vendor severity to one common scale, and rank the alerts by urgency.
+
+4
+00:00:18.949 --> 00:00:22.888
+The alerts are different from the ones in Activity 4.2.
+
+5
+00:00:23.987 --> 00:00:29.911
+On the Windows workstation, Import-Csv turns each row of the export into an object,
+
+6
+00:00:29.911 --> 00:00:37.263
+and Select-Object keeps just four columns: the alert ID, the product, the vendor severity and the host.
+
+7
+00:00:37.263 --> 00:00:40.331
+Eight alerts from seven different products.
+
+8
+00:00:41.431 --> 00:00:46.236
+First question: which kind of tool raised each alert?
+
+9
+00:00:46.236 --> 00:00:48.593
+The product name tells us.
+
+10
+00:00:48.593 --> 00:00:51.766
+Microsoft Defender Antivirus is AV.
+
+11
+00:00:51.766 --> 00:00:53.397
+Wazuh is our SIEM.
+
+12
+00:00:53.397 --> 00:00:57.024
+FortiGate is a next-generation firewall.
+
+13
+00:00:57.024 --> 00:01:01.919
+ModSecurity protects web applications, so it is a WAF.
+
+14
+00:01:01.919 --> 00:01:05.273
+Symantec DLP is data loss prevention.
+
+15
+00:01:05.273 --> 00:01:08.899
+Darktrace watches network behavior, NDR.
+
+16
+00:01:08.899 --> 00:01:13.160
+And CrowdStrike Falcon is EDR, on the endpoint.
+
+17
+00:01:14.560 --> 00:01:17.627
+Second: look at the severity column.
+
+18
+00:01:17.627 --> 00:01:22.569
+Severe, 12, High, Critical, Medium seventy-one percent, 7.
+
+19
+00:01:22.569 --> 00:01:24.018
+Different scales!
+
+20
+00:01:24.018 --> 00:01:27.597
+Our handout maps them to one common scale.
+
+21
+00:01:27.597 --> 00:01:32.113
+Wazuh levels 10 to 12 are High and 7 to 9 are Medium.
+
+22
+00:01:32.113 --> 00:01:35.351
+Darktrace's medium score stays Medium.
+
+23
+00:01:35.351 --> 00:01:44.127
+Vendor words like Severe and Critical become our High or Critical, but only after we check the details.
+
+24
+00:01:45.228 --> 00:01:47.766
+Here is why we check the details.
+
+25
+00:01:47.766 --> 00:01:52.767
+Where-Object picks alert D-01, and Format-List shows every field.
+
+26
+00:01:52.767 --> 00:02:01.152
+The vendor says Severe, but the file is the EICAR test file, a harmless standard file used to test antivirus,
+
+27
+00:02:01.152 --> 00:02:03.537
+and it was already quarantined.
+
+28
+00:02:03.537 --> 00:02:06.460
+After checking, I normalize it to Low.
+
+29
+00:02:06.460 --> 00:02:11.075
+A tool's severity is a starting point, not the final answer.
+
+30
+00:02:12.176 --> 00:02:15.794
+You can read the same export on Linux.
+
+31
+00:02:15.794 --> 00:02:23.984
+cut with a comma delimiter keeps fields 1, 3, 5 and 6: ID, product, severity and host.
+
+32
+00:02:25.084 --> 00:02:26.412
+Now the ranking.
+
+33
+00:02:26.412 --> 00:02:30.646
+I rank by what is still happening and by the asset.
+
+34
+00:02:30.646 --> 00:02:39.530
+D-02 and D-08 are on the same file server and the same account, svc_print: a password spray that succeeded,
+
+35
+00:02:39.530 --> 00:02:41.688
+then a new scheduled task.
+
+36
+00:02:41.688 --> 00:02:47.666
+Together that is a compromise in progress, so they are first and second.
+
+37
+00:02:47.666 --> 00:02:51.568
+D-03 shows a PC trying to reach a known bad IP.
+
+38
+00:02:51.568 --> 00:02:55.221
+It was blocked, but that PC may be infected.
+
+39
+00:02:55.221 --> 00:02:59.788
+The blocked attacks and the test file go to the bottom.
+
+40
+00:03:00.888 --> 00:03:01.715
+Your turn.
+
+41
+00:03:01.715 --> 00:03:06.181
+In the CTM Virtual Lab, choose Day 4 and Activity 4.2.
+
+42
+00:03:06.181 --> 00:03:13.874
+Load the ten alerts with Import-Csv, or cut on Linux, and fill in the source, affected asset,
+
+43
+00:03:13.874 --> 00:03:18.009
+normalized severity and urgency rank for each one.
+
+44
+00:03:18.009 --> 00:03:24.047
+Use the severity table in your handout, and remember to read the details.
+

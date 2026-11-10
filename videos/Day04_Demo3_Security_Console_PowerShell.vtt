@@ -1,0 +1,138 @@
+WEBVTT
+
+1
+00:00:00.400 --> 00:00:05.418
+On a real Windows PC you would open Windows Security and Event Viewer.
+
+2
+00:00:05.418 --> 00:00:12.158
+In the CTM Virtual Lab we read the same information with PowerShell, the way many analysts do.
+
+3
+00:00:12.158 --> 00:00:19.113
+In this demonstration I check Microsoft Defender's status, its protection history, its event log,
+
+4
+00:00:19.113 --> 00:00:23.271
+my own logon, and the Wazuh agent on the demo workstation.
+
+5
+00:00:24.371 --> 00:00:26.805
+First, is the antivirus healthy?
+
+6
+00:00:26.805 --> 00:00:31.748
+Get-MpComputerStatus, piped to Format-List with three properties.
+
+7
+00:00:31.748 --> 00:00:38.364
+Real-time protection is True, and the signature version and last update time are shown.
+
+8
+00:00:38.364 --> 00:00:43.307
+If real-time protection were False, that alone would be an alert.
+
+9
+00:00:44.407 --> 00:00:46.196
+Protection history.
+
+10
+00:00:46.196 --> 00:00:50.243
+Get-MpThreat lists what Defender has found.
+
+11
+00:00:50.243 --> 00:00:55.137
+One threat: the EICAR test file, with severity ID 5.
+
+12
+00:00:55.137 --> 00:00:57.584
+It is not active any more.
+
+13
+00:00:58.683 --> 00:01:05.595
+Get-MpThreatDetection adds the details an analyst needs: which user, when it was first detected,
+
+14
+00:01:05.595 --> 00:01:11.859
+which process wrote the file, and the exact path, in the Downloads folder of trainee07.
+
+15
+00:01:12.959 --> 00:01:17.281
+The same detection is written to Defender's event log.
+
+16
+00:01:17.281 --> 00:01:25.364
+Get-WinEvent with a filter hashtable picks the Defender Operational log and event IDs 1116, detected,
+
+17
+00:01:25.364 --> 00:01:27.205
+and 1117, action taken.
+
+18
+00:01:27.205 --> 00:01:34.967
+Format-List shows the full message: the threat name, severity, path, and the action, quarantined.
+
+19
+00:01:36.067 --> 00:01:37.953
+Now the Security log.
+
+20
+00:01:37.953 --> 00:01:42.802
+I filter event ID 4624 and take only the newest event.
+
+21
+00:01:42.802 --> 00:01:50.256
+Logon type 2 means someone logged on at the keyboard, and the account is trainee07.
+
+22
+00:01:50.256 --> 00:01:54.835
+In Activity 4.4 you record your own logon this way.
+
+23
+00:01:55.935 --> 00:01:59.786
+Last: is the SIEM still receiving logs from this PC?
+
+24
+00:01:59.786 --> 00:02:03.933
+Get-Service Wazuh star shows the Wazuh agent is Running.
+
+25
+00:02:03.933 --> 00:02:08.079
+A stopped agent means the SOC is blind on that computer.
+
+26
+00:02:09.179 --> 00:02:14.167
+On a real Windows computer the same information is in these places.
+
+27
+00:02:14.167 --> 00:02:19.452
+Protection history is in Windows Security, Virus and threat protection.
+
+28
+00:02:19.452 --> 00:02:22.057
+The event logs are in Event Viewer.
+
+29
+00:02:22.057 --> 00:02:28.235
+If your trainer provides the Wazuh dashboard, you can check agent status there too.
+
+30
+00:02:29.335 --> 00:02:30.154
+Your turn.
+
+31
+00:02:30.154 --> 00:02:34.573
+In the CTM Virtual Lab, choose Day 4 and Activity 4.4.
+
+32
+00:02:34.573 --> 00:02:42.266
+On your own WKS-LAB workstation, run these commands and record what you find: Defender status,
+
+33
+00:02:42.266 --> 00:02:51.350
+the threat in your protection history, the time of event 1116, your own 4624 logon, and the Wazuh agent status.
+
+34
+00:02:51.350 --> 00:02:55.687
+Your workstation has a different detection from mine.
+

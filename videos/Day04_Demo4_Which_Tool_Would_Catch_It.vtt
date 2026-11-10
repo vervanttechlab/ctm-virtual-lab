@@ -1,0 +1,258 @@
+WEBVTT
+
+1
+00:00:00.400 --> 00:00:05.049
+Every security tool watches one place and sees one kind of evidence.
+
+2
+00:00:05.049 --> 00:00:11.955
+In this demonstration I take three situations at a school and decide which tool would catch each one,
+
+3
+00:00:11.955 --> 00:00:16.537
+and which second tool would still catch it if the first one failed.
+
+4
+00:00:16.537 --> 00:00:19.067
+That second tool is defense in depth.
+
+5
+00:00:19.067 --> 00:00:25.768
+The situations are different from the eight in Activity 4.1, so watch the method, not the answers.
+
+6
+00:00:26.867 --> 00:00:32.188
+Start from the Layers of Defense table in your Day 4 handout.
+
+7
+00:00:32.188 --> 00:00:35.502
+I grouped it by where each tool looks.
+
+8
+00:00:35.502 --> 00:00:38.991
+Anti-virus looks at files on a computer.
+
+9
+00:00:38.991 --> 00:00:43.003
+EDR watches what programs do on that computer.
+
+10
+00:00:43.003 --> 00:00:48.237
+Firewalls, IDS and IPS sit where traffic enters the network.
+
+11
+00:00:48.237 --> 00:00:50.853
+A WAF guards only the website.
+
+12
+00:00:50.853 --> 00:00:53.034
+DLP watches data leaving.
+
+13
+00:00:53.034 --> 00:00:56.435
+NDR studies traffic inside the network.
+
+14
+00:00:56.435 --> 00:00:59.924
+The SIEM collects logs from all of them.
+
+15
+00:00:59.924 --> 00:01:06.727
+Threat intelligence is a list of known bad addresses, domains and file hashes.
+
+16
+00:01:06.727 --> 00:01:10.740
+And OT and IoT security guard special devices.
+
+17
+00:01:11.840 --> 00:01:12.920
+Scenario one.
+
+18
+00:01:12.920 --> 00:01:20.151
+An attacker on the internet sends a known exploit to the school's mail server, MAIL-01,
+
+19
+00:01:20.151 --> 00:01:24.306
+and the school wants it stopped before it arrives.
+
+20
+00:01:24.306 --> 00:01:26.052
+Where does it happen?
+
+21
+00:01:26.052 --> 00:01:27.714
+At the network edge.
+
+22
+00:01:27.714 --> 00:01:28.877
+What evidence?
+
+23
+00:01:28.877 --> 00:01:32.784
+A packet that matches a known attack signature.
+
+24
+00:01:32.784 --> 00:01:38.352
+Both IDS and IPS can recognize it, but an IDS only raises an alert.
+
+25
+00:01:38.352 --> 00:01:41.760
+An IPS sits in-line and drops the packet.
+
+26
+00:01:41.760 --> 00:01:46.414
+Because the school wants it stopped, the primary is IPS.
+
+27
+00:01:46.414 --> 00:01:55.639
+Second layer: the SIEM, which keeps the IPS log and can connect it with anything that happens on MAIL-01 later.
+
+28
+00:01:56.740 --> 00:01:57.811
+Scenario two.
+
+29
+00:01:57.811 --> 00:02:03.086
+Every night from midnight to five, a computer-lab PC, LAB-PC-14,
+
+30
+00:02:03.086 --> 00:02:09.020
+sends a small message to the same rare outside domain every ten minutes.
+
+31
+00:02:09.020 --> 00:02:10.668
+No file was flagged.
+
+32
+00:02:10.668 --> 00:02:12.399
+Where does it happen?
+
+33
+00:02:12.399 --> 00:02:13.635
+On the network.
+
+34
+00:02:13.635 --> 00:02:14.789
+What evidence?
+
+35
+00:02:14.789 --> 00:02:20.229
+A pattern: the same small connection, again and again, on a timer.
+
+36
+00:02:20.229 --> 00:02:30.036
+That pattern is called beaconing, and it is what NDR is built to notice, because it studies traffic behavior over time.
+
+37
+00:02:30.036 --> 00:02:37.372
+Second layer: EDR on LAB-PC-14, which can show which program is making those connections.
+
+38
+00:02:38.472 --> 00:02:39.626
+Scenario three.
+
+39
+00:02:39.626 --> 00:02:46.166
+An advisory from CERT-PH, the Philippines' national computer emergency response team,
+
+40
+00:02:46.166 --> 00:02:49.783
+lists a malicious domain, cdn-sync dot example.
+
+41
+00:02:49.783 --> 00:02:54.169
+Our DNS logs show a faculty PC looked it up this morning.
+
+42
+00:02:54.169 --> 00:02:55.785
+Where does it happen?
+
+43
+00:02:55.785 --> 00:02:58.017
+A lookup leaving the network.
+
+44
+00:02:58.017 --> 00:02:59.094
+What evidence?
+
+45
+00:02:59.094 --> 00:03:04.249
+A name that is already on a published list of known bad indicators.
+
+46
+00:03:04.249 --> 00:03:10.713
+That matching job belongs to threat intelligence: the feed is loaded into our tools,
+
+47
+00:03:10.713 --> 00:03:13.868
+and they compare every lookup against it.
+
+48
+00:03:13.868 --> 00:03:20.640
+Second layer: the next-generation firewall, using the same feed to block the connection.
+
+49
+00:03:21.740 --> 00:03:23.322
+Two common mistakes.
+
+50
+00:03:23.322 --> 00:03:26.725
+First, answering anti-virus for everything.
+
+51
+00:03:26.725 --> 00:03:28.782
+Anti-virus looks at files.
+
+52
+00:03:28.782 --> 00:03:34.163
+In scenario two no file was flagged, so anti-virus would stay quiet.
+
+53
+00:03:34.163 --> 00:03:37.091
+Second, choosing the same tool twice.
+
+54
+00:03:37.091 --> 00:03:44.134
+The second layer must be a different tool that sees the situation from a different place.
+
+55
+00:03:44.134 --> 00:03:51.177
+Then if one tool is switched off, out of date, or fooled, the other one still catches it.
+
+56
+00:03:51.177 --> 00:03:53.155
+That is defense in depth.
+
+57
+00:03:54.256 --> 00:03:56.124
+Here is my finished table.
+
+58
+00:03:56.124 --> 00:04:03.097
+For each situation I can say where it happened, what evidence it left, and why that tool sees it.
+
+59
+00:04:03.097 --> 00:04:08.632
+Be ready to defend your choice the same way: name the place and the evidence.
+
+60
+00:04:09.731 --> 00:04:10.483
+Your turn.
+
+61
+00:04:10.483 --> 00:04:14.538
+In the CTM Virtual Lab, choose Day 4 and Activity 4.1.
+
+62
+00:04:14.538 --> 00:04:18.368
+Discuss the eight bank scenarios with your partner.
+
+63
+00:04:18.368 --> 00:04:25.203
+For each one ask the same questions: where does it happen, and what evidence does it leave?
+
+64
+00:04:25.203 --> 00:04:33.539
+Then choose the primary solution and a different second layer in your Lab Notebook, and press Check my answers.
+

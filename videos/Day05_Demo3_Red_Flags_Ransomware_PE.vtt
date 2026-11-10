@@ -1,0 +1,162 @@
+WEBVTT
+
+1
+00:00:00.400 --> 00:00:07.436
+The Competency Standards name two red flag detections we must check at once: ransomware, and PE infection,
+
+2
+00:00:07.436 --> 00:00:10.357
+which is a virus that infects program files.
+
+3
+00:00:10.357 --> 00:00:22.240
+In this demonstration I read endpoint file events from three school computers and decide which shows ransomware, which shows a PE infection, and which is normal approved software.
+
+4
+00:00:23.339 --> 00:00:25.157
+First, a summary.
+
+5
+00:00:25.157 --> 00:00:31.571
+cut keeps column two, the host, and column five, the action.
+
+6
+00:00:31.571 --> 00:00:35.527
+sort and uniq dash c count each pair.
+
+7
+00:00:35.527 --> 00:00:40.338
+LIB-PC-02 renamed five files and created one.
+
+8
+00:00:40.338 --> 00:00:45.897
+MKT-PC-04 modified three files and had a quarantine.
+
+9
+00:00:45.897 --> 00:00:49.211
+REG-PC-01 modified three files.
+
+10
+00:00:50.311 --> 00:00:53.558
+Let's look at the renames on LIB-PC-02.
+
+11
+00:00:53.558 --> 00:00:59.470
+Fields one, three, six and seven: time, process, old name and new name.
+
+12
+00:00:59.470 --> 00:01:06.297
+Every file got the same new extension, dot crypt nine, within twenty-four seconds,
+
+13
+00:01:06.297 --> 00:01:11.791
+done by winhelper dot exe running from the AppData Roaming folder.
+
+14
+00:01:12.891 --> 00:01:17.393
+grep dash c counts the matching lines: five files.
+
+15
+00:01:17.393 --> 00:01:28.106
+And the next event, the one that created HOW TO GET FILES BACK dot txt on the desktop, is the ransom note, red flag R2.
+
+16
+00:01:28.106 --> 00:01:31.257
+LIB-PC-02 is a ransomware red flag.
+
+17
+00:01:31.257 --> 00:01:33.147
+Escalate immediately.
+
+18
+00:01:34.247 --> 00:01:36.108
+Now the other two hosts.
+
+19
+00:01:36.108 --> 00:01:42.389
+Both modified files, so I ask: which program did it, and who signed that program?
+
+20
+00:01:42.389 --> 00:01:50.375
+On Windows, Import-Csv and Group-Object signer group the events by the company that signed the process.
+
+21
+00:01:51.475 --> 00:02:02.141
+Unsigned processes made nine changes: the five renames, the ransom note, and three modified executables on MKT-PC-04.
+
+22
+00:02:02.141 --> 00:02:05.514
+Microsoft Windows signed four events.
+
+23
+00:02:05.514 --> 00:02:12.169
+One is the antivirus engine, and three are TiWorker dot exe on REG-PC-01.
+
+24
+00:02:12.169 --> 00:02:18.094
+TiWorker is Windows Update, which replaces DLL files in System32.
+
+25
+00:02:18.094 --> 00:02:24.019
+It is on the SOP's approved list, so REG-PC-01 is not a red flag.
+
+26
+00:02:25.119 --> 00:02:27.636
+Last, the antivirus detection.
+
+27
+00:02:27.636 --> 00:02:32.838
+Where-Object keeps the rows whose detection starts with Virus.
+
+28
+00:02:32.838 --> 00:02:41.479
+On MKT-PC-04, a program called keygen dot exe modified three installers in the shared Marketing folder,
+
+29
+00:02:41.479 --> 00:02:46.346
+and then Defender found Virus Win32 Sality in one of them.
+
+30
+00:02:46.346 --> 00:02:53.309
+Executables modified by a non-updater, plus a Virus detection: red flags V1 and V2.
+
+31
+00:02:53.309 --> 00:02:54.567
+A PE infection.
+
+32
+00:02:55.667 --> 00:02:57.736
+Here is my red flag check.
+
+33
+00:02:57.736 --> 00:03:04.021
+Two red flags, both escalated immediately, with the evidence and the SOP codes.
+
+34
+00:03:04.021 --> 00:03:08.556
+One normal host, ruled out by its process and its signer.
+
+35
+00:03:08.556 --> 00:03:17.387
+That last step matters: if we escalated every Windows Update, the Shift Lead would stop trusting our red flags.
+
+36
+00:03:18.487 --> 00:03:19.355
+Your turn.
+
+37
+00:03:19.355 --> 00:03:22.565
+In the CTM Virtual Lab, choose Day 5.
+
+38
+00:03:22.565 --> 00:03:29.333
+In Activity 5.3, check the file events of five hosts with these same commands.
+
+39
+00:03:29.333 --> 00:03:34.365
+Then, in Activity 5.4, check your own WKS-LAB workstation.
+
+40
+00:03:34.365 --> 00:03:41.479
+Every seat has different evidence, so trust your own screen, not your classmate's.
+

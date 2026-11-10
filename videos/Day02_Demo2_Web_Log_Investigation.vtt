@@ -1,0 +1,210 @@
+WEBVTT
+
+1
+00:00:00.400 --> 00:00:05.859
+In this demonstration we investigate a web server's access log, step by step.
+
+2
+00:00:05.859 --> 00:00:12.170
+The log comes from a fictitious LGU e-services portal where citizens check their permits.
+
+3
+00:00:12.170 --> 00:00:18.055
+It is a different log from the one in your activity, so the method is what matters.
+
+4
+00:00:18.055 --> 00:00:23.727
+Our goal: find the suspicious requests, and decide which one is the most urgent.
+
+5
+00:00:24.827 --> 00:00:27.099
+First, how big is the log?
+
+6
+00:00:27.099 --> 00:00:30.856
+wc -l counts the lines: seventeen requests.
+
+7
+00:00:30.856 --> 00:00:39.155
+Small enough to read, but let's be systematic anyway, because real logs have millions of lines.
+
+8
+00:00:40.255 --> 00:00:43.256
+Next, the first three lines with head.
+
+9
+00:00:43.256 --> 00:00:52.019
+These are normal: a citizen's PC loading the home page and a script file, and a phone checking a permit status.
+
+10
+00:00:52.019 --> 00:00:55.966
+All got status 200, success, from normal browsers.
+
+11
+00:00:55.966 --> 00:01:03.940
+Remember the fields: client IP, timestamp, request, status code, size, and at the end the user agent,
+
+12
+00:01:03.940 --> 00:01:06.703
+the software that made the request.
+
+13
+00:01:07.804 --> 00:01:09.590
+Now the whole file.
+
+14
+00:01:09.590 --> 00:01:12.504
+Don't read it line by line yet.
+
+15
+00:01:12.504 --> 00:01:15.419
+Let the computer count for you.
+
+16
+00:01:15.419 --> 00:01:21.153
+This awk command prints only the first field, the IP address.
+
+17
+00:01:21.153 --> 00:01:29.145
+Then sort, uniq dash C counts each one, and sort dash R N puts the busiest IP on top.
+
+18
+00:01:29.145 --> 00:01:36.195
+One address stands out: 198.51.100.140, with eight requests in a small log.
+
+19
+00:01:37.295 --> 00:01:39.621
+Let's see what that IP did.
+
+20
+00:01:39.621 --> 00:01:41.860
+grep shows only its lines.
+
+21
+00:01:41.860 --> 00:01:49.783
+Six POST requests to the admin login page in six seconds, all with status 401, unauthorized.
+
+22
+00:01:49.783 --> 00:01:52.538
+Wrong password, again and again.
+
+23
+00:01:52.538 --> 00:01:57.878
+And the user agent is python-requests, a script, not a person.
+
+24
+00:01:57.878 --> 00:02:02.184
+That is a password-guessing attack, a brute force.
+
+25
+00:02:03.283 --> 00:02:05.798
+Now the most important two lines.
+
+26
+00:02:05.798 --> 00:02:14.559
+On the seventh try the status changes to 302, a redirect, which is what a login page does after a successful login.
+
+27
+00:02:14.559 --> 00:02:18.673
+And then a GET of the admin dashboard with status 200.
+
+28
+00:02:18.673 --> 00:02:20.197
+The attacker got in.
+
+29
+00:02:20.197 --> 00:02:27.740
+A successful attack is always more urgent than a blocked one, so this goes to the top of my report.
+
+30
+00:02:29.340 --> 00:02:31.263
+Next, the user agents.
+
+31
+00:02:31.263 --> 00:02:33.448
+zgrab is a scanning tool.
+
+32
+00:02:33.448 --> 00:02:40.267
+This IP asked for a WordPress login page, a git config file and a backup file.
+
+33
+00:02:40.267 --> 00:02:45.774
+Status 404 every time: not found, these files don't exist here.
+
+34
+00:02:45.774 --> 00:02:49.183
+That is someone probing for weaknesses.
+
+35
+00:02:49.183 --> 00:02:54.515
+It failed, so it's lower priority, but I still record the IP.
+
+36
+00:02:55.616 --> 00:02:56.998
+One more pattern.
+
+37
+00:02:56.998 --> 00:03:03.340
+This search request contains a script tag, an attempt at cross-site scripting,
+
+38
+00:03:03.340 --> 00:03:07.487
+where an attacker tries to inject code into a page.
+
+39
+00:03:07.487 --> 00:03:09.845
+The status is 403, forbidden.
+
+40
+00:03:09.845 --> 00:03:13.098
+The web application firewall blocked it.
+
+41
+00:03:13.098 --> 00:03:15.943
+Blocked, but still worth recording.
+
+42
+00:03:17.044 --> 00:03:19.700
+Here is my finished findings table.
+
+43
+00:03:19.700 --> 00:03:26.911
+For each suspicious IP: what was attempted, the status, whether it succeeded, and the priority.
+
+44
+00:03:26.911 --> 00:03:31.466
+Brute force with a successful login, critical, escalate now.
+
+45
+00:03:31.466 --> 00:03:38.373
+The scanner and the cross-site scripting attempt failed, so they are lower, but documented.
+
+46
+00:03:38.373 --> 00:03:42.699
+This is the same table you will fill in for Activity 2.3.
+
+47
+00:03:43.800 --> 00:03:44.593
+Your turn.
+
+48
+00:03:44.593 --> 00:03:48.083
+In the CTM Virtual Lab, choose Activity 2.3.
+
+49
+00:03:48.083 --> 00:04:01.252
+On your own Ubuntu VM, investigate web underscore access dot log in the assets folder with the same steps: count by IP, follow the status codes, read the user agents.
+
+50
+00:04:01.252 --> 00:04:09.264
+Record each suspicious IP, what was attempted, the status, and whether it succeeded in the worksheet,
+
+51
+00:04:09.264 --> 00:04:11.485
+then press Check my answers.
+
+52
+00:04:11.485 --> 00:04:14.975
+Flag anything that succeeded as most urgent.
+

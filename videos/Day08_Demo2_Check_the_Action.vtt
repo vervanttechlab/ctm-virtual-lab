@@ -1,0 +1,74 @@
+WEBVTT
+
+1
+00:00:00.400 --> 00:00:03.453
+The security solution says it took action.
+
+2
+00:00:03.453 --> 00:00:04.325
+Did it work?
+
+3
+00:00:04.325 --> 00:00:12.975
+In this demonstration I check three actions from the school: first the event the antivirus wrote, then the host itself.
+
+4
+00:00:14.076 --> 00:00:18.867
+The action events, from the Defender Operational logs.
+
+5
+00:00:18.867 --> 00:00:21.529
+Event 1117 means action taken.
+
+6
+00:00:21.529 --> 00:00:28.716
+Event 1118 means the action failed: here, the file was in use by another process.
+
+7
+00:00:29.815 --> 00:00:36.537
+Now the after-action check: someone looked on each computer for the file.
+
+8
+00:00:36.537 --> 00:00:39.300
+On LIB-PC-02 the file is gone.
+
+9
+00:00:39.300 --> 00:00:46.666
+On MKT-PC-04 the file is still present, even though event 1117 said quarantined.
+
+10
+00:00:46.666 --> 00:00:52.927
+And on REG-PC-01 it is present, as you would expect after a failure.
+
+11
+00:00:54.027 --> 00:00:56.706
+So only one action is verified.
+
+12
+00:00:56.706 --> 00:01:06.469
+MKT-PC-04 is the dangerous one: the console looks fine, but the infected installer is still on the shared folder.
+
+13
+00:01:06.469 --> 00:01:12.085
+An action you did not verify is an action you only hope happened.
+
+14
+00:01:12.085 --> 00:01:19.516
+Both MKT-PC-04 and REG-PC-01 are escalated to Tier 2, which we will practise tomorrow.
+
+15
+00:01:20.615 --> 00:01:21.503
+Your turn.
+
+16
+00:01:21.503 --> 00:01:26.298
+In the CTM Virtual Lab, choose Day 8 and Activity 8.2.
+
+17
+00:01:26.298 --> 00:01:29.494
+Six actions on the bank's computers.
+
+18
+00:01:29.494 --> 00:01:38.640
+For each one, read the event and the after-action check, and decide: verified, not verified, or failed.
+
