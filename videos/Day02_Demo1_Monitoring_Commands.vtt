@@ -201,122 +201,186 @@ Those services belong to root, and a normal user cannot see their names.
 This is a very common stumbling block in Activity 2.1, so remember the fix.
 
 51
-00:04:24.240 --> 00:04:30.725
+00:04:24.240 --> 00:04:29.836
 I run it again with sudo, which means: run this as administrator.
 
 52
-00:04:30.725 --> 00:04:34.616
-Now the last column names each process.
+00:04:29.836 --> 00:04:36.552
+Now each line ends with a new part: users, two brackets, and a name in quotes.
 
 53
-00:04:34.616 --> 00:04:39.205
-Port 22 is sshd, the SSH remote login service.
+00:04:36.552 --> 00:04:40.341
+That name is the service that owns the port.
 
 54
-00:04:39.205 --> 00:04:42.497
-Port 80 is apache2, a web server.
+00:04:40.341 --> 00:04:43.268
+Read each line from left to right.
 
 55
-00:04:42.497 --> 00:04:45.790
-And 53 is the local DNS resolver.
+00:04:43.268 --> 00:04:48.434
+The port is the number after the colon in the fourth column.
 
 56
-00:04:45.790 --> 00:04:50.280
-For a lab web server, all three are expected.
+00:04:48.434 --> 00:04:52.309
+The service is the name in quotes at the end.
 
 57
-00:04:51.379 --> 00:04:52.898
-What is running?
+00:04:52.309 --> 00:04:53.687
+Port 22 is sshd.
 
 58
-00:04:52.898 --> 00:04:55.460
-ps aux lists every process.
+00:04:53.687 --> 00:04:55.323
+Port 80 is apache2.
 
 59
-00:04:55.460 --> 00:05:00.205
-I sort it by CPU and keep the top lines with head.
+00:04:55.323 --> 00:04:57.648
+Port 53 is systemd-resolve.
 
 60
-00:05:00.205 --> 00:05:06.563
-Apache runs as the user www-data, which is normal for a web server.
+00:04:58.747 --> 00:05:01.686
+Notice the difference from Windows.
 
 61
-00:05:06.563 --> 00:05:08.272
-sshd runs as root.
+00:05:01.686 --> 00:05:11.173
+On Windows, netstat only gave us a process ID, so we needed a second command, tasklist, to turn 1180 into a name.
 
 62
-00:05:08.272 --> 00:05:14.155
-And the bash shell at the bottom is my own session as trainee.
+00:05:11.173 --> 00:05:19.737
+On Linux, sudo ss already prints the name and the PID on the same line, so there is no second command.
 
 63
-00:05:15.255 --> 00:05:24.484
-System information: hostnamectl gives the host name, the operating system, Ubuntu 24.04, and the kernel version.
+00:05:19.737 --> 00:05:22.592
+Then I ask what each service does.
 
 64
-00:05:24.484 --> 00:05:30.087
-On older systems, uname dash A gives the kernel version in one line.
+00:05:22.592 --> 00:05:25.698
+sshd is the SSH remote login service.
 
 65
-00:05:31.187 --> 00:05:34.501
-Finally, who is logged in, and who was?
+00:05:25.698 --> 00:05:27.713
+apache2 is a web server.
 
 66
-00:05:34.501 --> 00:05:36.625
-last shows recent logins.
+00:05:27.713 --> 00:05:36.109
+systemd-resolve is Ubuntu's own DNS resolver, and it listens only on 127.0.0.53, inside the machine.
 
 67
-00:05:36.625 --> 00:05:40.363
-trainee is still logged in from 10.10.20.57.
+00:05:36.109 --> 00:05:39.887
+For a lab web server, all three are expected.
 
 68
-00:05:40.363 --> 00:05:44.440
-That is the Windows workstation we just checked.
+00:05:39.887 --> 00:05:44.001
+If you see a name you do not know, do two things.
 
 69
-00:05:44.440 --> 00:05:51.492
-Connecting the dots from one host to another like this is exactly what analysts do.
+00:05:44.001 --> 00:05:51.725
+First, ps aux piped to grep and the name shows its full command line and which user runs it.
 
 70
-00:05:52.591 --> 00:05:58.425
-This afternoon you will not need VirtualBox or a virtual machine on your own computer.
+00:05:51.725 --> 00:06:01.800
+Second, look up the port: the handout's ports table lists the common ones, and you can search the internet for the rest.
 
 71
-00:05:58.425 --> 00:06:00.867
-You practice in the CTM Virtual Lab.
+00:06:01.800 --> 00:06:06.334
+Then ask: should this server be offering that service?
 
 72
-00:06:00.867 --> 00:06:06.564
-Open the lab link from your trainer and sign in with your full name and seat number.
+00:06:06.334 --> 00:06:11.540
+On your own VM, that question is the analysis in Activity 2.1.
 
 73
-00:06:06.564 --> 00:06:12.805
-First try the mission Practice: Demo 1, which has the same workstation and VM as this video,
+00:06:12.639 --> 00:06:14.158
+What is running?
 
 74
-00:06:12.805 --> 00:06:14.840
-so your screen can match mine.
+00:06:14.158 --> 00:06:16.720
+ps aux lists every process.
 
 75
-00:06:15.939 --> 00:06:16.696
-Your turn.
+00:06:16.720 --> 00:06:21.465
+I sort it by CPU and keep the top lines with head.
 
 76
-00:06:16.696 --> 00:06:20.025
-In the CTM Virtual Lab, choose Activity 2.1.
+00:06:21.465 --> 00:06:27.823
+Apache runs as the user www-data, which is normal for a web server.
 
 77
-00:06:20.025 --> 00:06:28.951
-You get your own Windows workstation and your own Ubuntu VM, with values different from mine and from your classmates.
+00:06:27.823 --> 00:06:29.532
+sshd runs as root.
 
 78
-00:06:28.951 --> 00:06:36.063
-Run these commands on both hosts and record the results in the worksheet in your Lab Notebook.
+00:06:29.532 --> 00:06:35.415
+And the bash shell at the bottom is my own session as trainee.
 
 79
-00:06:36.063 --> 00:06:44.989
-Then answer the analysis question: which ports are listening, which service owns each one, and is anything unexpected?
+00:06:36.515 --> 00:06:45.744
+System information: hostnamectl gives the host name, the operating system, Ubuntu 24.04, and the kernel version.
 
 80
-00:06:44.989 --> 00:06:49.755
+00:06:45.744 --> 00:06:51.347
+On older systems, uname dash A gives the kernel version in one line.
+
+81
+00:06:52.447 --> 00:06:55.761
+Finally, who is logged in, and who was?
+
+82
+00:06:55.761 --> 00:06:57.885
+last shows recent logins.
+
+83
+00:06:57.885 --> 00:07:01.623
+trainee is still logged in from 10.10.20.57.
+
+84
+00:07:01.623 --> 00:07:05.700
+That is the Windows workstation we just checked.
+
+85
+00:07:05.700 --> 00:07:12.752
+Connecting the dots from one host to another like this is exactly what analysts do.
+
+86
+00:07:13.851 --> 00:07:19.685
+This afternoon you will not need VirtualBox or a virtual machine on your own computer.
+
+87
+00:07:19.685 --> 00:07:22.127
+You practice in the CTM Virtual Lab.
+
+88
+00:07:22.127 --> 00:07:27.824
+Open the lab link from your trainer and sign in with your full name and seat number.
+
+89
+00:07:27.824 --> 00:07:34.065
+First try the mission Practice: Demo 1, which has the same workstation and VM as this video,
+
+90
+00:07:34.065 --> 00:07:36.100
+so your screen can match mine.
+
+91
+00:07:37.199 --> 00:07:37.956
+Your turn.
+
+92
+00:07:37.956 --> 00:07:41.285
+In the CTM Virtual Lab, choose Activity 2.1.
+
+93
+00:07:41.285 --> 00:07:50.211
+You get your own Windows workstation and your own Ubuntu VM, with values different from mine and from your classmates.
+
+94
+00:07:50.211 --> 00:07:57.323
+Run these commands on both hosts and record the results in the worksheet in your Lab Notebook.
+
+95
+00:07:57.323 --> 00:08:06.249
+Then answer the analysis question: which ports are listening, which service owns each one, and is anything unexpected?
+
+96
+00:08:06.249 --> 00:08:11.015
 Remember to use sudo with ss, and pin your outputs as evidence.
 
